@@ -3,4 +3,9 @@ class Api::TodoItemsController < ApplicationController
     todos = TodoItem.all
     render json: todos
   end
+
+  def show
+    todo = TodoItem.find(params[:id])
+    render json: todo
+  end
 end
