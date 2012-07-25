@@ -3,5 +3,8 @@ class Todolist.Routers.TodoList extends Backbone.Router
     'todo_items': 'index'
 
   index: ->
-    @indexView = new Todolist.Views.TodoItemsIndex
-    $("#container").html @indexView.render().el
+    todos = new Todolist.Collections.TodoItems
+    todos.reset([{name: "test1", complete: false}, {name: 'test2', complete: false}])
+    # todos.fetch()
+    indexView = new Todolist.Views.TodoItemsIndex(collection: todos)
+    indexView.render()
