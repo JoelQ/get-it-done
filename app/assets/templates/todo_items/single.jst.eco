@@ -1,1 +1,2 @@
+<input type="checkbox" <%= 'checked="checked"' if @complete %>"/>
 <%= @name %>
