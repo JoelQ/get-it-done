@@ -6,7 +6,7 @@ class Todolist.Views.TodoItemsIndex extends Backbone.View
     'click button': "add"
 
   initialize: ->
-    @collection.bind("reset add", @render, this)
+    @collection.bind("reset", @render, this)
 
   render: ->
     this.$el.detach()
@@ -22,5 +22,6 @@ class Todolist.Views.TodoItemsIndex extends Backbone.View
 
   add: (e)=>
     e.preventDefault()
-    console.log taskName = $(e.target).siblings("input").val()
-    console.log @collection.create({name: taskName, complete: false})
+    taskName = $(e.target).siblings("input").val()
+    item = @collection.create({name: taskName, complete: false})
+    @renderOne(item)
