@@ -1,1 +1,6 @@
 <div id="container"></div>
+
+<%# Bootstrapping the data for backbone  %>
+<script>
+  Todolist.todos= new Todolist.Collections.TodoItems(<%= TodoItem.all.to_json.html_safe %>)
+</script>
