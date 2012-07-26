@@ -1,2 +1,3 @@
 <h1>Get it done!</h1>
+<input type="text" id="create-item" /><button>Add task</button>
 <ul id="list"></ul>
