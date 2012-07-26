@@ -22,6 +22,8 @@ class Todolist.Views.TodoItemsIndex extends Backbone.View
 
   add: (e)=>
     e.preventDefault()
-    taskName = $(e.target).siblings("input").val()
+    txtBox = $(e.target).siblings("input")
+    taskName = txtBox.val()
     item = @collection.create({name: taskName, complete: false})
     @renderOne(item)
+    txtBox.val("")
