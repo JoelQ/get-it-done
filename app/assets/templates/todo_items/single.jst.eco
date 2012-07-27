@@ -1,2 +1,2 @@
 <input type="checkbox" <%= 'checked="checked"' if @complete %>"/>
-<%= @name %>
+<span class="item-name"><%= @name %></span>

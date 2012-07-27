@@ -4,6 +4,8 @@ class Todolist.Views.TodoItemsSingle extends Backbone.View
 
   events:
     'click input[type=checkbox]': 'toggleCheck'
+    'dblclick .item-name': 'edit'
+    'click .edit': 'save'
 
   initialize: ->
     @model.on('change', @render, this)
@@ -15,7 +17,14 @@ class Todolist.Views.TodoItemsSingle extends Backbone.View
     this.$el.html @template(@model.toJSON())
     this
 
-  toggleCheck: (e)->
-    li = $(e.target).parent()
-    li.toggleClass("complete incomplete")
+  toggleCheck: ->
+    this.$el.toggleClass("complete incomplete")
     @model.toggleComplete()
+
+  edit: ->
+    this.$(".item-name").html("<input type='text' value='#{@model.get('name')}'/><button class='edit'>Save</button>")
+
+  save: ->
+    name = this.$("input[type=text]").val()
+    @model.set({name: name})
+    @model.save()
