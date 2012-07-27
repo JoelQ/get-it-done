@@ -5,20 +5,12 @@ class Api::TodoItemsController < ApplicationController
   end
 
   def create
-    respond_to do |format|
-      format.json do
-        render json: TodoItem.create(params[:todo_item])
-      end
-    end
+    render json: TodoItem.create(params[:todo_item])
   end
 
   def update
-    respond_to do |format|
-      format.json do
-        todo = TodoItem.find(params[:id])
-        render json: todo.update_attributes(params[:todo_item])
-      end
-    end
+    todo = TodoItem.find(params[:id])
+    render json: todo.update_attributes(params[:todo_item])
   end
 
   def show
