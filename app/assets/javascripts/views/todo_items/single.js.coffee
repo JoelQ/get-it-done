@@ -7,10 +7,11 @@ class Todolist.Views.TodoItemsSingle extends Backbone.View
     'click input[type=checkbox]': 'toggleCheck'
     'dblclick .item-name': 'edit'
     'click .edit': 'save'
+    'click .destroy': 'destroy'
 
   initialize: ->
     @model.on('change', @render, this)
-    @model.on('delete', @remove, this)
+    @model.on('destroy', @remove, this)
 
   render: ->
     c = (if @model.get "complete" then 'complete' else 'incomplete')
@@ -29,3 +30,7 @@ class Todolist.Views.TodoItemsSingle extends Backbone.View
     name = this.$("input[type=text]").val()
     @model.set({name: name})
     @model.save()
+
+  destroy: (e)->
+    e.preventDefault()
+    @model.destroy()

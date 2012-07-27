@@ -17,4 +17,9 @@ class Api::TodoItemsController < ApplicationController
     todo = TodoItem.find(params[:id])
     render json: todo
   end
+
+  def destroy
+    todo = TodoItem.find(params[:id])
+    render json: todo.destroy
+  end
 end

@@ -1,2 +1,3 @@
 <input type="checkbox" <%= 'checked="checked"' if @complete %>"/>
 <span class="item-name"><%= @name %></span>
+<a href="#" class="destroy">Delete</a>
