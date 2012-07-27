@@ -18,3 +18,6 @@ class Todolist.Views.TodoItemsSingle extends Backbone.View
   toggleCheck: (e)->
     li = $(e.target).parent()
     li.toggleClass("complete incomplete")
+    complete = !@model.get('complete')
+    @model.set({complete: complete})
+    @model.save()
